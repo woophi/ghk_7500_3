@@ -113,6 +113,16 @@ const sheetQuickTags = style({
 const sheetSubmitButton = style({
   marginTop: '8px',
 });
+const cellAnswer = style({
+  borderRadius: '16px',
+  padding: '16px',
+  backgroundColor: '#f2f3f5',
+});
+
+const img = style({
+  overflow: 'hidden',
+  borderRadius: '16px',
+});
 
 export const appSt = {
   bottomBtn,
@@ -131,4 +141,6 @@ export const appSt = {
   sheetStakeCenter,
   sheetQuickTags,
   sheetSubmitButton,
+  cellAnswer,
+  img,
 };
