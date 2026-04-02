@@ -75,8 +75,9 @@ export const App = () => {
   } | null>(null);
   const [activeCategory, setActiveCategory] = useState(CATEGORY_ALL);
   const categories = [CATEGORY_ALL, ...new Set(questions.map(({ category }) => category))];
-  const filteredQuestions =
-    activeCategory === CATEGORY_ALL ? questions : questions.filter(({ category }) => category === activeCategory);
+  const filteredQuestions = (
+    activeCategory === CATEGORY_ALL ? questions : questions.filter(({ category }) => category === activeCategory)
+  ).filter(v => Boolean(v?.question));
 
   useEffect(() => {
     if (!LS.getItem(LSKeys.UserId, null)) {
