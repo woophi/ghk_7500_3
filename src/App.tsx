@@ -64,6 +64,7 @@ const answers = [
   },
 ];
 export const App = () => {
+  const [loading, setLoading] = useState(false);
   const [showBs, setShowBs] = useState(false);
   const [finalAnswer, setFinalAnswer] = useState<string>('');
   const [view, setView] = useState<'final' | 'answer'>('answer');
@@ -109,9 +110,12 @@ export const App = () => {
   };
 
   const submit = () => {
+    setLoading(true);
     window.gtag('event', '7500_quiz_answer', { var: 'var3', answer: finalAnswer });
 
-    window.location.replace(LINK);
+    setTimeout(() => {
+      window.location.replace(LINK);
+    }, 3500);
   };
 
   if (view === 'final') {
@@ -141,7 +145,7 @@ export const App = () => {
           ))}
         </div>
         <div className={appSt.bottomBtn}>
-          <Button onClick={submit} type="button" block view="primary" disabled={!finalAnswer}>
+          <Button onClick={submit} type="button" block view="primary" disabled={!finalAnswer} loading={loading}>
             Ответить
           </Button>
         </div>
